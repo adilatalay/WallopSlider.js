@@ -5,20 +5,26 @@
   This is the slide animation styles
 
 **************************************************/
-.wallop-slider__item--show-previous {
-  -webkit-animation: slideFromLeft 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+.wallop-slider--slide .wallop-slider__item--show-previous {
+  -webkit-animation: slideFromLeft 450ms ease both;
 }
 
-.wallop-slider__item--show-next {
-  -webkit-animation: slideFromRight 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+.wallop-slider--slide .wallop-slider__item--show-next {
+  -webkit-animation: slideFromRight 450ms ease both;
 }
 
-.wallop-slider__item--hide-previous {
-  -webkit-animation: slideToLeft 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+/* In order to animate the hidden elemends, we need to reset the display to block */
+.wallop-slider--slide .wallop-slider__item--hide-previous,
+.wallop-slider--slide .wallop-slider__item--hide-next {
+  display: block;
 }
 
-.wallop-slider__item--hide-next {
-  -webkit-animation: slideToRight 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+.wallop-slider--slide .wallop-slider__item--hide-previous {
+  -webkit-animation: slideToLeft 450ms ease both;
+}
+
+.wallop-slider--slide .wallop-slider__item--hide-next {
+  -webkit-animation: slideToRight 450ms ease both;
 }
 
 /*==========  SLIDE ANIMATIONS  ==========*/

@@ -29,16 +29,12 @@
   width: 100%;
 }
 
-  .wallop-slider__item img {
-    display: block;
-    width: 100%;
-  }
+.wallop-slider__item img {
+  display: block;
+  width: 100%;
+}
 
 .wallop-slider__item--current {
   display: block;
   position: static;
-}
-
-.wallop-slider__item--hide-previous, .wallop-slider__item--hide-next {
-  display: block;
 }
