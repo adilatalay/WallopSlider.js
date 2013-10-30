@@ -1,0 +1,30 @@
+/**************************************************
+
+  wallop-slider--fade.css
+
+  This is the fade animation styles
+
+**************************************************/
+
+.wallop-slider--fade .wallop-slider__item--show-previous {
+	-webkit-animation: none;
+}
+
+.wallop-slider--fade .wallop-slider__item--show-next {
+	-webkit-animation: none;
+}
+
+.wallop-slider--fade .wallop-slider__item--hide-previous {
+	-webkit-animation: fadeOut 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+.wallop-slider--fade .wallop-slider__item--hide-next {
+	-webkit-animation: fadeOut 450ms cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+
+/*==========  FADE ANIMATIONS  ==========*/
+@-webkit-keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
