@@ -6,18 +6,21 @@
 
   <meta name="viewport" content="initial-scale=1, user-scalable=no">
 
-  <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/wallop-slider.css">
+  <link rel="stylesheet" href="css/wallop-slider--slide.css">
+  <link rel="stylesheet" href="css/wallop-slider--fade.css">
+  <link rel="stylesheet" href="css/wallop-slider--custom.css">
 </head>
 <body>
 
   <h1>Wallop Slider</h1>
-  <p>Another fucking slider, I know... but this one's different.</p>
+
 
   <div class="container">
 
     <!-- SLIDER STARTS -->
-    <div class="photo-slider wallop-slider">
+    <div class="photo-slider wallop-slider wallop-slider--fade">
       <ul class="wallop-slider__list">
         <li class="wallop-slider__item wallop-slider__item--current"><img src="http://distilleryimage9.ak.instagram.com/6113581809eb11e39e3522000a9f18ab_7.jpg"></li>
         <li class="wallop-slider__item"><img src="http://distilleryimage4.ak.instagram.com/e27029bc1d4211e3852e22000ae90903_7.jpg"></li>
@@ -30,105 +33,12 @@
     </div>
     <!-- SLIDER ENDS -->
 
-    <section>
-      <h2>Benefits:</h2>
-      <ul>
-        <li>Mobile First</li>
-        <li>Progressive Enhancement</li>
-        <li>Transitions are all in CSS</li>
-        <li>Minimal Javascript</li>
-        <li>Flexible</li>
-        <li>Scalable</li>
-        <li>You have control</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Usage:</h2>
-      <h3>Basic</h3>
-
-      <pre class="prettyprint">
-&lt;head&gt;
-  &lt;!-- Include CSS --&gt;
-  &lt;link rel="stylesheet" href="path-to-wallop-slider.css"&gt;
-&lt;/head&gt;
-      </pre>
-      <pre class="prettyprint">
-&lt;div class="wallop-slider"&gt;
-  &lt;ul class="wallop-slider__list"&gt;
-    &lt;li class="wallop-slider__item wallop-slider__item--current"&gt;
-      &lt;img src="path-to-image"&gt;
-    &lt;/li&gt;
-    &lt;li class="wallop-slider__item"&gt;
-      &lt;img src="path-to-image"&gt;
-    &lt;/li&gt;
-    &lt;li class="wallop-slider__item"&gt;
-      &lt;img src="path-to-image"&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;button class="wallop-slider__btn wallop-slider__btn--previous" disabled&gt;Previous&lt;/button&gt;
-  &lt;button class="wallop-slider__btn wallop-slider__btn--next"&gt;Next&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;!-- Include Javascript --&gt;
-&lt;script src="path-to-wallopSlider.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-  // Create new isntance of WallopSlider
-  var slider = new WallopSlider('.wallop-slider');
-&lt;/script&gt;
-      </pre>
-      <p><a href="simple-demo.html">Standalone demo page</a></p>
-      <p>This is the most basic set up of WallopSlider, as you can see the demo page is not using any custom CSS and it is responsive by nature</p>
-
-
-      <h3>Options</h3>
-      <pre class="prettyprint">
-&lt;script&gt;
-  // Create new isntance of WallopSlider
-  var slider = new WallopSlider('.wallop-slider', {
-    wSBtnPreviousClass: 'wallop-slider__btn--previous',
-    wSBtnNextClass: 'wallop-slider__btn--next',
-    wSItemClass: 'wallop-slider__item',
-    wSCurrentItemClass: 'wallop-slider__item--current',
-    wSShowPreviousClass: 'wallop-slider__item--show-previous',
-    wSShowNextClass: 'wallop-slider__item--show-next',
-    wSHidePreviousClass: 'wallop-slider__item--hide-previous',
-    wSHideNextClass: 'wallop-slider__item--hide-next'
-  });
-&lt;/script&gt;
-      </pre>
-      <p>WallopSlider uses BEM Class Methodology but if you don't like that then you can pass your own classes through the options object.</p>
-
-    </section>
-
-    <section>
-      <h2>Demos</h2>
-      <ul>
-        <li><a href="simple-demo.html">Standalone demo - as basic as it gets</a></li>
-        <li><a href="fade.html">Fade Animation</a></li>
-        <li><a href="special.html">Special Animation</a></li>
-        <li><a href="multiple.html">Multiple Sliders</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Extensions</h2>
-      <p>The basic wallop-slider.scss has the typical slide animation, but to extend the animation to something of your own is really easy, so I've put together a few extensions here that you can use</p>
-      <ul>
-        <li><a href="https://github.com/peduarte/wallop-slider/blob/master/css/_wallop-slider--fade.scss">Fade</a></li>
-        <li><a href="https://github.com/peduarte/wallop-slider/blob/master/css/_wallop-slider--special.scss">Special</a></li>
-      </ul>
-    </section>
-
   </div>
-  <footer>
-    Illustrations by <a href="http://stuartruel.com">Stuart Ruel</a>
-  </footer>
 
 
+  <!-- Including the JavaScript files -->
   <script src="scripts/WallopSlider.js"></script>
   <script src="scripts/script.js"></script>
-  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 </body>
 </html>
