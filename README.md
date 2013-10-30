@@ -1,6 +1,6 @@
 # WallopSlider
 
-### Another fucking slider, I know... but this one's different.
+### Another fucking slider, I know... but this one's different. For Demo
 
 ### Benefits
 - Mobile First
@@ -33,8 +33,8 @@ Basic HTML setup
 		  <button class="wallop-slider__btn wallop-slider__btn--previous" disabled>Previous</button>
 		  <button class="wallop-slider__btn wallop-slider__btn--next">Next</button>
 		</div>
-      
-      
+
+
 		<!-- Include Javascript -->
 		<script src="path-to-wallopSlider.js"></script>
 		<script>
@@ -42,7 +42,7 @@ Basic HTML setup
 		  var slider = new WallopSlider('.wallop-slider');
 		</script>
 	</body>
-      	
+
 
 ### Online Demo
 I built a more detailed page about how this works, feel free to go [check it out](http://pedroduarte.me/wallop-slider)
