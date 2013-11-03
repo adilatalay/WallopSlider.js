@@ -7,12 +7,22 @@
 **************************************************/
 
 .wallop-slider__item--show-previous {
-
+  -webkit-animation: yourAnimation 400ms ease both;
 }
 
 .wallop-slider__item--show-next {
-
+  -webkit-animation: yourAnimation 400ms ease both;
 }
+
+/*
+  In order to animate the hidden elemends, we need to reset the display to block
+  Uncomment the block below if you will animate those elements
+*/
+
+/*.wallop-slider__item--hide-previous,
+.wallop-slider__item--hide-next {
+  display: block;
+}*/
 
 .wallop-slider__item--hide-previous {
 
@@ -23,11 +33,11 @@
 }
 
 /*==========  SLIDE ANIMATIONS  ==========*/
-@-webkit-keyframes animationName {
+@-webkit-keyframes yourAnimation {
   0% {
-
+    /* Add your animation properties here */
   }
   100% {
-
+    /* Add your animation properties here */
   }
 }
