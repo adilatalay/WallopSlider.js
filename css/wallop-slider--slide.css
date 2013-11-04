@@ -4,13 +4,16 @@
 
   This is the slide animation styles
 
+  NOTE: The 10ms animation-delay fixed some
+        weird rendering issues with iPhone.
+
 **************************************************/
 .wallop-slider--slide .wallop-slider__item--show-previous {
-  -webkit-animation: slideFromLeft 450ms ease both;
+  -webkit-animation: slideFromLeft 450ms 10ms ease both;
 }
 
 .wallop-slider--slide .wallop-slider__item--show-next {
-  -webkit-animation: slideFromRight 450ms ease both;
+  -webkit-animation: slideFromRight 450ms 10ms ease both;
 }
 
 /* In order to animate the hidden elemends, we need to reset the display to block */
@@ -20,11 +23,11 @@
 }
 
 .wallop-slider--slide .wallop-slider__item--hide-previous {
-  -webkit-animation: slideToLeft 450ms ease both;
+  -webkit-animation: slideToLeft 450ms 10ms ease both;
 }
 
 .wallop-slider--slide .wallop-slider__item--hide-next {
-  -webkit-animation: slideToRight 450ms ease both;
+  -webkit-animation: slideToRight 450ms 10ms ease both;
 }
 
 /*==========  SLIDE ANIMATIONS  ==========*/
