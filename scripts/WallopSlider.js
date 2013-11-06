@@ -55,17 +55,18 @@ WallopSlider = (function() {
   // Reset all settings by removing classes and attributes added by goTo() & updatePagination()
   WallopProto.removeAllHelperSettings = function () {
     removeClass(this.allItemsArray[this.currentItemIndex], this.options.wSCurrentItemClass);
-    removeClass(document.getElementsByClassName(this.options.wSHidePreviousClass)[0], this.options.wSHidePreviousClass);
-    removeClass(document.getElementsByClassName(this.options.wSHideNextClass)[0], this.options.wSHideNextClass);
-    removeClass(document.getElementsByClassName(this.options.wSShowPreviousClass)[0], this.options.wSShowPreviousClass);
-    removeClass(document.getElementsByClassName(this.options.wSShowNextClass)[0], this.options.wSShowNextClass);
+    removeClass($$(this.options.wSHidePreviousClass)[0], this.options.wSHidePreviousClass);
+    removeClass($$(this.options.wSHideNextClass)[0], this.options.wSHideNextClass);
+    removeClass($$(this.options.wSShowPreviousClass)[0], this.options.wSShowPreviousClass);
+    removeClass($$(this.options.wSShowNextClass)[0], this.options.wSShowNextClass);
     this.buttonPrevious.removeAttribute('disabled');
     this.buttonNext.removeAttribute('disabled');
   };
 
   // Method to add classes to the right elements depending on the index passed
   WallopProto.goTo = function (index) {
-    if (index >= this.allItemsArrayLength || index < 0) { return; }
+    index = Number(index);
+    if (index >= this.allItemsArrayLength || index < 0 || index === this.currentItemIndex) { return; }
 
     this.removeAllHelperSettings();
 
@@ -94,7 +95,14 @@ WallopSlider = (function() {
     this.buttonNext.addEventListener('click', function () { _this.onNextButtonClicked(); });
   };
 
+
+
   // Helper functions
+  function $$(element) {
+    if (!element) { return; }
+    return document.getElementsByClassName(element);
+  }
+
   function addClass(element, className) {
     if (!element) { return; }
     element.className = element.className.replace(/\s+$/gi, '') + ' ' + className;
