@@ -6,11 +6,11 @@
 
 **************************************************/
 
-.wallop-slider__item--show-previous {
+.wallop-slider--custom .wallop-slider__item--show-previous {
   -webkit-animation: yourAnimation 400ms ease both;
 }
 
-.wallop-slider__item--show-next {
+.wallop-slider--custom .wallop-slider__item--show-next {
   -webkit-animation: yourAnimation 400ms ease both;
 }
 
@@ -19,16 +19,16 @@
   Uncomment the block below if you will animate those elements
 */
 
-/*.wallop-slider__item--hide-previous,
-.wallop-slider__item--hide-next {
+/*.wallop-slider--custom .wallop-slider__item--hide-previous,
+.wallop-slider--custom .wallop-slider__item--hide-next {
   display: block;
 }*/
 
-.wallop-slider__item--hide-previous {
+.wallop-slider--custom .wallop-slider__item--hide-previous {
 
 }
 
-.wallop-slider__item--hide-next {
+.wallop-slider--custom .wallop-slider__item--hide-next {
 
 }
 
