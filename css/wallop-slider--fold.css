@@ -28,7 +28,7 @@
   display: block;
 }
 
-/*==========  SLIDE ANIMATIONS  ==========*/
+/*==========  FOLD ANIMATIONS  ==========*/
 @-webkit-keyframes foldFromLeft {
   0% {
     -webkit-transform: rotateY(-90deg);
