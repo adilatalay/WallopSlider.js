@@ -36,5 +36,5 @@
 
 .wallop-slider__item--current {
   display: block;
-  position: static;
+  position: relative;
 }
