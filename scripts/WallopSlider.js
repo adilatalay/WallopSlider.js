@@ -1,7 +1,7 @@
 /**
 * wallopSlider.js
 *
-* @fileoverview Simple Slider Class Handler
+* @fileoverview Simple Slider Class
 *
 * @author Pedro Duarte
 * @author http://pedroduarte.me
@@ -25,12 +25,16 @@ WallopSlider = (function() {
       wSShowPreviousClass: 'wallop-slider__item--show-previous',
       wSShowNextClass: 'wallop-slider__item--show-next',
       wSHidePreviousClass: 'wallop-slider__item--hide-previous',
-      wSHideNextClass: 'wallop-slider__item--hide-next'
+      wSHideNextClass: 'wallop-slider__item--hide-next',
+      wSCarousel: false
     };
 
     this.selector = selector;
+    this.$selector = document.querySelector(this.selector);
     this.options = extend(this.options, options);
     this.event = null;
+
+
 
     // "Global vars"
     this.allItemsArray = Array.prototype.slice.call(document.querySelectorAll(this.selector + ' .' + this.options.wSItemClass));
@@ -47,7 +51,7 @@ WallopSlider = (function() {
 
   // Update prev/next disabled attribute
   WallopProto.updatePagination = function () {
-    if ((this.currentItemIndex + 1) === this.allItemsArrayLength) {
+    if ((this.currentItemIndex + 1) === this.allItemsArrayLength && this.options.wSCarousel !== true) {
       this.buttonNext.setAttribute('disabled');
     } else if (this.currentItemIndex === 0) {
       this.buttonPrevious.setAttribute('disabled');
@@ -67,7 +71,7 @@ WallopSlider = (function() {
 
   // Method to add classes to the right elements depending on the index passed
   WallopProto.goTo = function (index) {
-    index = Number(index);
+    index = Number(index - 1);
     if (index >= this.allItemsArrayLength || index < 0 || index === this.currentItemIndex) { return; }
 
     this.removeAllHelperSettings();
@@ -81,17 +85,21 @@ WallopSlider = (function() {
 
     // Update event currentItemIndex property and dispatch it
     this.event.detail.currentItemIndex = this.currentItemIndex;
-    document.querySelector(this.selector).dispatchEvent(this.event);
+    this.$selector.dispatchEvent(this.event);
   };
 
   // Callback for when previous button is clicked
   WallopProto.onPreviousButtonClicked = function () {
-    this.goTo(this.currentItemIndex - 1);
+    this.goTo((this.currentItemIndex + 1) - 1);
   };
 
   // Callback for when next button is clicked
   WallopProto.onNextButtonClicked = function () {
-    this.goTo(this.currentItemIndex + 1);
+    if(this.currentItemIndex + 1 === this.allItemsArrayLength && this.options.wSCarousel === true) {
+      this.goTo(1);
+    } else {
+      this.goTo((this.currentItemIndex + 1) + 1);
+    }
   };
 
   // Attach click handlers
@@ -101,20 +109,35 @@ WallopSlider = (function() {
     this.buttonNext.addEventListener('click', function () { _this.onNextButtonClicked(); });
   };
 
+  // Method so it is nicer for the user to use custom events
+  WallopProto.on = function (eventName, callback) {
+    if (eventName !== 'change') {
+      throw new Error('the only available event is "change"');
+    }
 
+    this.$selector.addEventListener(eventName, function(event) {
+      return callback(event);
+    }, false);
+  };
 
-
-  // Helper functions
+  // Create custom Event
   WallopProto.createCustomEvent = function () {
     var _this = this;
-    this.event = new CustomEvent('goToEnded', {
+    this.event = new CustomEvent('change', {
       detail: {
+        parentSelector: _this.selector,
         currentItemIndex: Number(_this.currentItemIndex)
       },
       bubbles: true,
       cancelable: true
     });
   };
+
+
+
+  /**
+   * Helper functions
+   */
 
   function $$(element) {
     if (!element) { return; }

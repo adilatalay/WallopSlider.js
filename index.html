@@ -35,13 +35,14 @@
       <h2>Benefits:</h2>
       <p>I wrote a more detailed section about how WallopSlider works at the bottom of this page, but here's an overview:</p>
       <ul>
-        <li>Mobile First</li>
-        <li>Progressive Enhancement</li>
-        <li>Transitions are all in CSS</li>
-        <li>Minimal Javascript</li>
-        <li>Flexible</li>
-        <li>Scalable</li>
-        <li>You have control</li>
+        <li>Mobile first</li>
+        <li>Progressive enhancement</li>
+        <li>Transitions/Animations are all in CSS</li>
+        <li>Minimal JavaScript</li>
+        <li>Flexible &amp; Scalable</li>
+        <li>Custom events and API available</li>
+        <li>3KB minified</li>
+        <li>Dependency free - That's right, no jQuery</li>
       </ul>
     </section>
 
@@ -100,13 +101,64 @@
     wSShowPreviousClass: 'wallop-slider__item--show-previous',
     wSShowNextClass: 'wallop-slider__item--show-next',
     wSHidePreviousClass: 'wallop-slider__item--hide-previous',
-    wSHideNextClass: 'wallop-slider__item--hide-next'
+    wSHideNextClass: 'wallop-slider__item--hide-next',
+    wsCarousel = false // Shall the last slide go to the first?
   });
 &lt;/script&gt;
       </code></pre>
       <p>WallopSlider uses BEM Class Methodology but if you don't like that then you can pass your own classes through the options object.</p>
 
     </section>
+
+
+    <section>
+      <h2>API</h2>
+      <p>WallopSlider offers a basic API for you to use, so you can control it from your own buttons or gestures.</p>
+
+      <h3>Sample usage</h3>
+      <pre class="language-markup"><code class="language-markup">
+&lt;script&gt;
+  // Create new instance of WallopSlider
+  var slider = new WallopSlider('.wallop-slider');
+
+  // Let's say you want to go to the 2nd slide when you click on your button:
+  document.querySelector('.my-button').addEventListener('click', function () {
+    slider.toGo(2);
+  });
+
+  // If you're using jQuery, you can do the same thing like this:
+  $('.my-button').click(function () {
+    slider.goTo(2);
+  });
+&lt;/script&gt;
+      </code></pre>
+      <p>Make sure to check out this <a href="goto.html">demo</a> to see it in action!</p>
+
+    </section>
+
+
+    <section>
+      <h2>Custom Events</h2>
+      <p>WallopSlider dispatches a Custom Event everytime a slide changes, and it returns a custom detail object which contains the current slide index and the parent selector as a string.</p>
+      <blockquote>
+        <strong>!important note:</strong> The slide index starts from 0, like a proper index, you know? So... keep that in mind.
+      </blockquote>
+      <h3>Sample usage</h3>
+      <pre class="language-markup"><code class="language-markup">
+&lt;script&gt;
+  // Create new instance of WallopSlider
+  var slider = new WallopSlider('.wallop-slider');
+
+  // Subscribe to change event
+  slider.on('change', function (event) {
+    console.log(event.detail.currentItemIndex); // Returns the index of the current slide
+    console.log(event.detail.parentSelector); // Returns '.wallop-slider'
+  });
+&lt;/script&gt;
+      </code></pre>
+      <p>Make sure to check out this <a href="custom-events.html">demo</a> to see it in action!</p>
+    </section>
+
 
     <section>
       <a name="demos"></a>
@@ -122,6 +174,7 @@
         <li><a href="multiple.html">Multiple Sliders</a></li>
         <li><a href="targeted-animations.html">Targeted Animations (animation based on breakpoint)</a></li>
         <li><a href="goto.html">Using the API</a></li>
+        <li><a href="custom-events.html">Using Custom Events</a></li>
       </ul>
 
       <p>I also created an "exercise" branch which you can download to help you create your own custom animations, see <em>wallop-slider--custom.css</em>. To download the exercise files click <a href="https://github.com/peduarte/wallop-slider/archive/exercise.zip" target="_blank">here</a></p>
