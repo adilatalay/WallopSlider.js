@@ -46,9 +46,9 @@ WallopSlider = (function() {
   // Update prev/next disabled attribute
   WallopProto.updatePagination = function () {
     if ((this.currentItemIndex + 1) === this.allItemsArrayLength) {
-      this.buttonNext.setAttribute('disabled');
+      this.buttonNext.setAttribute('disabled', 'disabled');
     } else if (this.currentItemIndex === 0) {
-      this.buttonPrevious.setAttribute('disabled');
+      this.buttonPrevious.setAttribute('disabled', 'disabled');
     }
   };
 
