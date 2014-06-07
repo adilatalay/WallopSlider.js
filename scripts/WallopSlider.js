@@ -25,7 +25,8 @@ WallopSlider = (function() {
       wSShowPreviousClass: 'wallop-slider__item--show-previous',
       wSShowNextClass: 'wallop-slider__item--show-next',
       wSHidePreviousClass: 'wallop-slider__item--hide-previous',
-      wSHideNextClass: 'wallop-slider__item--hide-next'
+      wSHideNextClass: 'wallop-slider__item--hide-next',
+      wSCarousel: false
     };
 
     this.selector = selector;
@@ -50,10 +51,10 @@ WallopSlider = (function() {
 
   // Update prev/next disabled attribute
   WallopProto.updatePagination = function () {
-    if ((this.currentItemIndex + 1) === this.allItemsArrayLength) {
-      this.buttonNext.setAttribute('disabled');
+    if ((this.currentItemIndex + 1) === this.allItemsArrayLength && this.options.wSCarousel !== true) {
+      this.buttonNext.setAttribute('disabled', 'disabled');
     } else if (this.currentItemIndex === 0) {
-      this.buttonPrevious.setAttribute('disabled');
+      this.buttonPrevious.setAttribute('disabled', 'disabled');
     }
   };
 
@@ -94,7 +95,11 @@ WallopSlider = (function() {
 
   // Callback for when next button is clicked
   WallopProto.onNextButtonClicked = function () {
-    this.goTo((this.currentItemIndex + 1) + 1);
+    if(this.currentItemIndex + 1 === this.allItemsArrayLength && this.options.wSCarousel === true) {
+      this.goTo(1);
+    } else {
+      this.goTo((this.currentItemIndex + 1) + 1);
+    }
   };
 
   // Attach click handlers
@@ -155,6 +160,18 @@ WallopSlider = (function() {
     for (attrname in userOptions) { extendOptions[attrname] = userOptions[attrname]; }
     return extendOptions;
   }
+
+  // Pollyfill for CustomEvent() Constructor - thanks to Internet Explorer
+  // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent#Polyfill
+  function CustomEvent (event, params) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+    return evt;
+  }
+
+  CustomEvent.prototype = window.CustomEvent.prototype;
+  window.CustomEvent = CustomEvent;
 
   return Wallop;
 
